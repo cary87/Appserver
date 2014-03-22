@@ -1,4 +1,4 @@
-package com.sinaapp.mydemo27.dao;
+package com.funy.app.dao;
 
 import javax.annotation.Resource;
 

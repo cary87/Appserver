@@ -1,4 +1,4 @@
-package com.sinaapp.mydemo27.pojo;
+package com.funy.app.pojo;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;

@@ -1,4 +1,4 @@
-package com.sinaapp.mydemo27.service;
+package com.funy.app.service;
 
 import java.util.List;
 
@@ -7,8 +7,8 @@ import javax.annotation.Resource;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sinaapp.mydemo27.dao.UserDao;
-import com.sinaapp.mydemo27.pojo.User;
+import com.funy.app.dao.UserDao;
+import com.funy.app.pojo.User;
 @Service("userService")
 public class UserService {
 	

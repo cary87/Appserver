@@ -1,12 +1,12 @@
-package com.sinaapp.mydemo27.daoimpl;
+package com.funy.app.daoimpl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import com.sinaapp.mydemo27.dao.SuperDao;
-import com.sinaapp.mydemo27.dao.UserDao;
-import com.sinaapp.mydemo27.pojo.User;
+import com.funy.app.dao.SuperDao;
+import com.funy.app.dao.UserDao;
+import com.funy.app.pojo.User;
 @Component("userDao")
 public class UserDaoImpl extends SuperDao implements UserDao {
 

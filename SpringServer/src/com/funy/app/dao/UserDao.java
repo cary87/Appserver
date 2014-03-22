@@ -1,8 +1,8 @@
-package com.sinaapp.mydemo27.dao;
+package com.funy.app.dao;
 
 import java.util.List;
 
-import com.sinaapp.mydemo27.pojo.User;
+import com.funy.app.pojo.User;
 
 public interface UserDao {
 	public void deleteById(long id);

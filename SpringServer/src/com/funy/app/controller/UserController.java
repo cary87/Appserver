@@ -1,4 +1,4 @@
-package com.sinaapp.mydemo27.controller;
+package com.funy.app.controller;
 
 
 import java.util.Iterator;
@@ -16,8 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.sinaapp.mydemo27.pojo.User;
-import com.sinaapp.mydemo27.service.UserService;
+import com.funy.app.pojo.User;
+import com.funy.app.service.UserService;
 
 @Controller()
 public class UserController {
@@ -26,7 +26,6 @@ public class UserController {
 
 	@RequestMapping("/")
 	public ModelAndView welcome(){
-		System.out.println("test11123434");
 		ModelAndView mv=new ModelAndView();
 		List<User> list=service.findByLimit(30);
 		mv.addObject("list", list);
@@ -39,6 +38,7 @@ public class UserController {
 		if(result.hasFieldErrors()){
 			List<FieldError> list1=result.getFieldErrors();
 			List<String> list=new LinkedList<String>();
+			
 			Iterator< FieldError> it=list1.iterator();
 			while(it.hasNext()){
 				FieldError f=(FieldError)it.next();

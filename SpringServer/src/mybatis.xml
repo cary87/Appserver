@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-config.dtd">  
 <configuration>
 	<typeAliases>
-	<typeAlias alias="User" type="com.sinaapp.mydemo27.pojo.User"/>
+	<typeAlias alias="User" type="com.funy.app.pojo.User"/>
 	</typeAliases>
 	<mappers>
   <mapper resource="UserMapper.xml"/>
