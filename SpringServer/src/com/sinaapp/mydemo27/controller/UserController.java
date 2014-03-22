@@ -26,7 +26,7 @@ public class UserController {
 
 	@RequestMapping("/")
 	public ModelAndView welcome(){
-		System.out.println("test");
+		System.out.println("test1112");
 		ModelAndView mv=new ModelAndView();
 		List<User> list=service.findByLimit(30);
 		mv.addObject("list", list);
