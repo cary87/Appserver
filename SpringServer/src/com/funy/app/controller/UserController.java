@@ -1,111 +1,40 @@
 package com.funy.app.controller;
 
-
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
-
 import javax.annotation.Resource;
-import javax.validation.Valid;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
+
+import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.funy.app.pojo.User;
 import com.funy.app.service.UserService;
 
 @Controller()
 public class UserController {
-	@Resource(name="userService")
+	
+	@Resource(name = "userService")
 	private UserService service;
 
-	@RequestMapping("/")
-	public ModelAndView welcome(){
-		ModelAndView mv=new ModelAndView();
-		List<User> list=service.findByLimit(30);
-		mv.addObject("list", list);
-		mv.setViewName("welcome");
-		return mv;
-	}
-	@RequestMapping("/handleinseart")
-	public ModelAndView handleInseart(@Valid User user,BindingResult result){
-		ModelAndView mv=new ModelAndView();
-		if(result.hasFieldErrors()){
-			List<FieldError> list1=result.getFieldErrors();
-			List<String> list=new LinkedList<String>();
-			
-			Iterator< FieldError> it=list1.iterator();
-			while(it.hasNext()){
-				FieldError f=(FieldError)it.next();
-				String s=f.getDefaultMessage();
-				list.add(s);
-			}
-			mv.addObject("errors",list);
-			mv.setViewName("error");
-			return mv;
-		}else{
-			service.insertUser(user);
-			mv.setView(new RedirectView("/"));
-			return mv;
-		}	
-	}
-	@RequestMapping("/addpage")
-	public String addPage(){
-		return "addpage";
-	}
-	@RequestMapping("/updatepage")
-	public String updatePage(){
-		return "updatepage";
-	}
-	@RequestMapping("/handleupdate")
-	public ModelAndView handleUpdate(@Valid User user,BindingResult result){
-		ModelAndView mv=new ModelAndView();
-		if(result.hasFieldErrors()){
-			List<FieldError> list1=result.getFieldErrors();
-			List<String> list=new LinkedList<String>();
-			Iterator< FieldError> it=list1.iterator();
-			while(it.hasNext()){
-				FieldError f=(FieldError)it.next();
-				String s=f.getDefaultMessage();
-				list.add(s);
-			}
-			mv.addObject("errors",list);
-			mv.setViewName("error");
-			return mv;
-		}else{
-			service.updateUser(user);
-			mv.setView(new RedirectView("/"));
-			return mv;
-		}	
-	}
-	@RequestMapping("/handledelete")
-	public String handleDelete(@RequestParam("id")long id){
-		service.deleteById(id);
-		return "redirect:/";
-	}
-	
-	@RequestMapping("/search")
-	public ModelAndView search(String name){
-		List<User> list=service.findByName(name);
-		ModelAndView mv=new ModelAndView();
-		mv.addObject("list", list);
-		mv.setViewName("welcome");
-		return mv;
-	}
-	
-	
-	public UserService getService() {
-		return service;
+	@RequestMapping(value = "/signup", method=RequestMethod.POST)
+	public void signup(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		String req = IOUtils.toString(request.getInputStream());
+		JSONObject json = JSONObject.fromObject(req);
+		User user = (User) JSONObject.toBean(json, User.class);
+		service.insertUser(user);
+		JSONObject obj = new JSONObject();
+		obj.put("errCode", 0);
+		obj.put("message", "success");
+		response.getWriter().write(obj.toString());
+
 	}
 
+	@RequestMapping(value = "/signin", method=RequestMethod.POST)
+	public void signin(HttpServletRequest request, HttpServletResponse response) throws Exception {
 
-	public void setService(UserService service) {
-		this.service = service;
 	}
-
 }

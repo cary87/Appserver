@@ -35,7 +35,6 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 
-	<!-- <property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_mydemo27"/>  -->
 	    <property name="url" value="jdbc:mysql://127.0.0.1:3306/note"/>
 		<property name="username" value="root"/>
 		<property name="password" value="123456"/>
@@ -50,15 +49,5 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
         <property name="removeAbandoned"    value="true" />
         <property name="removeAbandonedTimeout"         value="180" />
 
-		 	<!-- 	
-	<property name="url" value="jdbc:mysql://localhost:3306/demo"/>
-	<property name="username" value="root"/>
-	<property name="password" value="ushuaia"/>
-	<property name="initialSize" value="5"/>
-		<property name="maxActive" value="50"/>
-		<property name="maxIdle" value="10"/>
-		<property name="maxWait" value="20"/>
-		<property name="minIdle" value="1"/>
-		 -->
 </bean>
 </beans>
