@@ -30,6 +30,10 @@
 	select * from user limit 0,#{off}
 </select>
 
+<select id="findWithEmailAndPassword" parameterType="User" resultType="User">
+select * from user where email=#{email} and password=#{password}
+</select>
+
 <resultMap type="User" id="UserMap">
 <id property="id" column="id"/>
 <result property="name" column="name"/>

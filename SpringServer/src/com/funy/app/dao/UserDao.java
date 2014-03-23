@@ -11,5 +11,6 @@ public interface UserDao {
 	public List<User> findByLimit(int limit);
 	public List<User> findByName(String name);
 	public User findById(long id);
+	public User findWithEmailAndPassword(User user);
 	
 }

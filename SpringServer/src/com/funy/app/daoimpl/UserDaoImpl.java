@@ -40,5 +40,10 @@ public class UserDaoImpl extends SuperDao implements UserDao {
 	public User findById(long id) {
 		return this.template.selectOne("User.findById", id);
 	}
+
+	@Override
+	public User findWithEmailAndPassword(User user) {
+		return this.template.selectOne("User.findWithEmailAndPassword", user);
+	}
 	
 }

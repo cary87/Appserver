@@ -1,13 +1,17 @@
 package com.funy.app.service;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.funy.app.SessionManeger;
 import com.funy.app.dao.UserDao;
+import com.funy.app.pojo.ClientSession;
 import com.funy.app.pojo.User;
 @Service("userService")
 public class UserService {
@@ -47,6 +51,20 @@ public class UserService {
 	@Transactional
 	public User findById(long id){
 		return dao.findById(id);
+	}
+	@Transactional
+	public User login(User user) {
+		return dao.findWithEmailAndPassword(user);
+	}
+	@Scheduled(cron="0/60 * *  * * ? ")   //每60秒执行一次  
+	public void checkSessionValid() {
+		Iterator<ClientSession> it = SessionManeger.clientSessions.iterator();
+		while(it.hasNext()) {
+			ClientSession session = it.next();
+			if(!session.isValid()) {
+				it.remove();
+			}
+		}
 	}
 	
 }
