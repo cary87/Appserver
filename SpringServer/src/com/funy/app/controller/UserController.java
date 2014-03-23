@@ -29,10 +29,16 @@ public class UserController {
 		String req = IOUtils.toString(request.getInputStream());
 		JSONObject json = JSONObject.fromObject(req);
 		User user = (User) JSONObject.toBean(json, User.class);
-		service.insertUser(user);
 		JSONObject obj = new JSONObject();
-		obj.put("errCode", 0);
-		obj.put("message", "success");
+		try {
+			service.insertUser(user);
+			obj.put("errCode", 0);
+			obj.put("message", "success");
+		} catch (Exception e) {
+			obj.put("errCode", -1);
+			obj.put("message", "email exist");
+		}
+		
 		response.getWriter().write(obj.toString());
 
 	}

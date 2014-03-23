@@ -5,7 +5,7 @@
 <mapper namespace="User">
 
 <insert id="saveUser" parameterType="User">
-	insert into user (name,age,sex)values(#{name},#{age},#{sex})
+	insert into user (name,age,sex,email,password)values(#{name},#{age},#{sex},#{email},#{password})
 </insert>
 
 <delete id="deleteById" parameterType="long">

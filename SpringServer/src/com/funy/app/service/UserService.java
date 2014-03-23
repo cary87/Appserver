@@ -56,8 +56,9 @@ public class UserService {
 	public User login(User user) {
 		return dao.findWithEmailAndPassword(user);
 	}
-	@Scheduled(cron="0/60 * *  * * ? ")   //每60秒执行一次  
+	@Scheduled(cron="0/3600 * *  * * ? ")   //每h执行一次  
 	public void checkSessionValid() {
+		System.out.println("checkSessionValid");
 		Iterator<ClientSession> it = SessionManeger.clientSessions.iterator();
 		while(it.hasNext()) {
 			ClientSession session = it.next();
