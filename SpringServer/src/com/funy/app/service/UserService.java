@@ -58,7 +58,6 @@ public class UserService {
 	}
 	@Scheduled(cron="0/3600 * *  * * ? ")   //每h执行一次  
 	public void checkSessionValid() {
-		System.out.println("checkSessionValid");
 		Iterator<ClientSession> it = SessionManeger.clientSessions.iterator();
 		while(it.hasNext()) {
 			ClientSession session = it.next();
