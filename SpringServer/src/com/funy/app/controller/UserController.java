@@ -107,7 +107,7 @@ public class UserController {
 		JSONObject obj = new JSONObject();
 		if(updateTokenRes) {
 			obj.put("errCode", 0);
-			obj.put("message", "logout success");
+			obj.put("message", "updateToken success");
 		} else {
 			obj.put("errCode", -1);
 			obj.put("message", "update token fail");

@@ -15,6 +15,8 @@ import com.funy.app.pojo.User;
 
 
 public class MyTest {
+	private static final String SERVER_URL = "http://ccserver.sinaapp.com/";
+	private static final String EMAIL = "test@qq.com";
 	private String token = null;
 	
 	@Test
@@ -23,7 +25,7 @@ public class MyTest {
 		user.setAge(88);
 		user.setName("Kevin");
 		user.setSex("boy");
-		user.setEmail("test@qq.com");
+		user.setEmail(EMAIL);
 		user.setPassword("test123456");
 		String json = JSONObject.fromObject(user).toString();
 		request("signup", json);
@@ -33,7 +35,7 @@ public class MyTest {
 	@Test
 	public void signin() {
 		User user = new User();
-		user.setEmail("test@qq.com");
+		user.setEmail(EMAIL);
 		user.setPassword("test123456");
 		String json = JSONObject.fromObject(user).toString();
 		request("signin", json);
@@ -42,7 +44,7 @@ public class MyTest {
 	@Test
 	public void signout() {
 		User user = new User();
-		user.setEmail("test@qq.com");
+		user.setEmail(EMAIL);
 		String json = JSONObject.fromObject(user).toString();
 		request("signout", json);
 	}
@@ -50,7 +52,7 @@ public class MyTest {
 	@Test 
 	public void updateToken() {
 		User user = new User();
-		user.setEmail("test@qq.com");
+		user.setEmail(EMAIL);
 		String json = JSONObject.fromObject(user).toString();
 		request("updateToken", json);
 	}
@@ -60,7 +62,7 @@ public class MyTest {
 		OutputStream os = null;
 		InputStream is = null;
 		try {
-			URL url = new URL("http://localhost:8080/SpringServer/" + action);
+			URL url = new URL(SERVER_URL + action);
 			urlConn = (HttpURLConnection) url.openConnection();
 			urlConn.setDoOutput(true);
 			urlConn.setDoInput(true);
