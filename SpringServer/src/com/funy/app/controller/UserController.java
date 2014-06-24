@@ -12,6 +12,7 @@ import org.apache.commons.io.IOUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.funy.app.SessionManeger;
 import com.funy.app.pojo.ClientSession;
@@ -23,6 +24,13 @@ public class UserController {
 	
 	@Resource(name = "userService")
 	private UserService service;
+	
+	@RequestMapping("/")
+	public ModelAndView welcome() {
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("welcome");
+		return modelAndView;
+	}
 
 	@RequestMapping(value = "/signup", method=RequestMethod.POST)
 	public void signup(HttpServletRequest request, HttpServletResponse response) throws Exception {
