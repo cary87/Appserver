@@ -15,7 +15,8 @@ import com.funy.app.pojo.User;
 
 
 public class MyTest {
-	private static final String SERVER_URL = "http://ccserver.sinaapp.com/";
+	//private static final String SERVER_URL = "http://ccserver.sinaapp.com/";
+	private static final String SERVER_URL = "http://127.0.0.1:8080/SpringServer/";
 	private static final String EMAIL = "test@qq.com";
 	private String token = null;
 	
@@ -23,7 +24,7 @@ public class MyTest {
 	public void signup() {
 		User user = new User();
 		user.setAge(88);
-		user.setName("Kevin");
+		user.setName("Devin");
 		user.setSex("boy");
 		user.setEmail(EMAIL);
 		user.setPassword("test123456");
@@ -69,6 +70,7 @@ public class MyTest {
 			urlConn.setUseCaches(false);
 			urlConn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
 			urlConn.setRequestMethod("POST");
+			urlConn.setConnectTimeout(100000);
 			urlConn.connect();
 			os = urlConn.getOutputStream();
 			os.write(json.getBytes());

@@ -24,7 +24,7 @@ public class UserController {
 	@Resource(name = "userService")
 	private UserService service;
 
-	@RequestMapping(value = "/signup", method=RequestMethod.POST)
+	@RequestMapping(value = "/signup", method=RequestMethod.GET)
 	public void signup(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String req = IOUtils.toString(request.getInputStream());
 		JSONObject json = JSONObject.fromObject(req);
