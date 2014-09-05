@@ -7,6 +7,6 @@
 <title>Welcome</title>
 </head>
 <body>
-<iframe height=498 width=510 src="http://sports.cntv.cn/live/cctv5/index.shtml?zhibo8" frameborder=0 allowfullscreen></iframe>
+<h1>Hello World</h1>
 </body>
 </html>

@@ -34,7 +34,7 @@ public class UserController {
 
 	@RequestMapping(value = "/signup", method=RequestMethod.GET)
 	public void signup(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String req = IOUtils.toString(request.getInputStream());
+		/*String req = IOUtils.toString(request.getInputStream());
 		JSONObject json = JSONObject.fromObject(req);
 		User user = (User) JSONObject.toBean(json, User.class);
 		JSONObject obj = new JSONObject();
@@ -45,9 +45,11 @@ public class UserController {
 		} catch (Exception e) {
 			obj.put("errCode", -1);
 			obj.put("message", "email exist");
-		}
+		}*/
+		String name = request.getParameter("name");
+		String pwd = request.getParameter("password");
 		
-		response.getWriter().write(obj.toString());
+		response.getWriter().write("name: " + name + " password: " + pwd);
 
 	}
 
