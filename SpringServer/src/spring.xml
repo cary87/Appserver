@@ -39,8 +39,11 @@ class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 
 <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 	<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-
-	   <!--  <property name="url" value="jdbc:mysql://127.0.0.1:3306/note"/> -->
+		<!-- local -->
+	   	<!-- <property name="url" value="jdbc:mysql://127.0.0.1:3306/note"/> -->
+	   	<!-- <property name="username" value="root"/> -->
+	   	<!-- <property name="password" value="123456"/> -->
+	   	<!-- remote -->
 	    <property name="url" value="jdbc:mysql://w.rdc.sae.sina.com.cn:3307/app_ccserver"/>
 		<property name="username" value="0zzwn30nmm"/>
 		<property name="password" value="3xl12jwy0450k10jwmwx1mwhi02xyy5h4h53ymiz"/>
